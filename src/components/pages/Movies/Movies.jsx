@@ -6,11 +6,14 @@ import MoviesSearchList from '../../common/MoviesSearchList';
 import { moviesSearchValueCtx } from '../../../context/MoviesSearchValue/MoviesSearchValueCtx';
 
 export default function Movies() {
-  const { search, totalResults, setTotalResults, setMoviesCount } = useContext(moviesSearchValueCtx);
-  const { error, loading, page, setPage, movies, totalPages } = useSearch(
-    { search, totalResults, setTotalResults });
+  const { search, setTotalResults, setMoviesCount } = useContext(moviesSearchValueCtx);
+  const { error, loading, page, setPage, movies, totalPages, totalResults } = useSearch(
+    { search });
 
-  useEffect(() => setMoviesCount(movies.length), [movies.length, setMoviesCount]);
+  useEffect(() => {
+    setMoviesCount(movies.length);
+    setTotalResults(totalResults);
+  }, [movies.length, setMoviesCount, setTotalResults, totalResults]);
 
   return (
     <div className={s.container}>

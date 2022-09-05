@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import s from './NavBar.module.css';
 import Container from '../Container';
 import { useContext } from 'react';
@@ -15,7 +15,13 @@ export default function NavBar() {
             <NavLink className={s.link} to='/'>Home</NavLink>
             <NavLink className={s.link} to='/movies'>Movies</NavLink>
           </nav>
-          <div className={s.stat}>Results: {moviesCount}/{totalResults}</div>
+          <Routes>
+            <Route path='/' element={false}/>
+            <Route path='/movies' element={
+              <div className={s.stat}>Results: {moviesCount}/{totalResults}</div>
+            } />
+            <Route path='*' element={false} />
+          </Routes>
         </div>
       </Container>
     </div>

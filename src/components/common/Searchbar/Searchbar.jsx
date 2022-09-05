@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import s from './Searchbar.module.css';
 import { moviesSearchValueCtx } from '../../../context/MoviesSearchValue/MoviesSearchValueCtx';
@@ -9,6 +9,7 @@ function Searchbar() {
     e.preventDefault();
     setSearch(e.target.elements['search'].value.toLowerCase().trim());
   };
+  useEffect(() => (() => setSearch('')), [setSearch]);
 
   return (
     <header className={s.container}>

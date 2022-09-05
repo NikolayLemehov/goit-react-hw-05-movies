@@ -31,7 +31,7 @@ export const App = () => {
           </Routes>
         </div>
       </MoviesSearchValueCtx>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/*<ReactQueryDevtools initialIsOpen={false} />*/}
     </QueryClientProvider>
   );
 };

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export const useOriginPath = () => {
   const {pathname} = useLocation();
-  const originPath = useRef('');
+  const originPath = useRef(pathname);
   useEffect(() => {
     if (originPath.current !== '') return;
     originPath.current = pathname;

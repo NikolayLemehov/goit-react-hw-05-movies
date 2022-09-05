@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { searchMovie } from '../../../services/themoviedb.api';
 
-export const useSearch = ({ search, totalResults, setTotalResults }) => {
+export const useSearch = ({ search }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
 
-  // const [totalResults, setTotalResults] = useState(null);
+  const [totalResults, setTotalResults] = useState(0);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
