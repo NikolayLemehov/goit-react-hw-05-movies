@@ -1,0 +1,11 @@
+.navLink {
+  color: inherit;
+}
+
+.navLink:hover {
+  color: var(--cl-active);
+}
+
+.navLink.active {
+  color: var(--cl-active);
+}
