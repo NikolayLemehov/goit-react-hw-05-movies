@@ -3,12 +3,9 @@ import { useQuery } from 'react-query';
 import { fetchDetailMovie } from '../../../services/themoviedb.api';
 import Container from '../../common/Container';
 import { IMG_URL } from '../../../variables';
-import { useOriginPath } from '../../../hooks/useOriginPath';
 import s from './MovieDetails.module.css';
 
 export default function MovieDetails() {
-  const originPath = useOriginPath();
-  // console.log(originPath)
   const {movieId} = useParams();
   const {isLoading, data, error} = useQuery(['movies', movieId],
     () => fetchDetailMovie(movieId));
@@ -32,13 +29,13 @@ export default function MovieDetails() {
             <li>
               <NavLink
                 className={s.navLink}
-                to={`${originPath}/cast`}
+                to={`/movies/${movieId}/cast`} // ToDo custom path
               >Cast</NavLink>
             </li>
             <li>
               <NavLink
                 className={s.navLink}
-                to={`${originPath}/reviews`}
+                to={`/movies/${movieId}/reviews`}
               >Reviews</NavLink>
             </li>
           </ul>

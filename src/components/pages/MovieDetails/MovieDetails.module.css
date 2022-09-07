@@ -6,6 +6,6 @@
   color: var(--cl-active);
 }
 
-.navLink.active {
+.navLink[aria-current="page"] {
   color: var(--cl-active);
 }

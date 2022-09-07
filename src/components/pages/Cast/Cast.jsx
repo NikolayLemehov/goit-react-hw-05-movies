@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { fetchMovieCredits } from '../../../services/themoviedb.api';
-import { useOriginPath } from '../../../hooks/useOriginPath';
 
 export default function Cast() {
   const {movieId} = useParams();
@@ -11,7 +10,7 @@ export default function Cast() {
     () => fetchMovieCredits(movieId));
   // const castList = data?.cast?.float(1)
   // const {cast} = data || {};
-  // console.log(data?.cast[0]);
+  const castList = typeof data?.cast === 'object' && data.cast
   return (
     <div>
       {error && <h1>Error: {error}</h1>}
@@ -19,8 +18,9 @@ export default function Cast() {
       {!error && !isLoading &&
         <>
           <div>Cast</div>
+
           <ul>
-            {data.cast.flat(1).map((
+            {castList && castList.map((
               {name, character, credit_id}) => {
               // console.log('character', character)
               return <li key={credit_id}>
